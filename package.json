@@ -1,0 +1,28 @@
+{
+  "name": "jpg-sdr",
+  "version": "1.0.0",
+  "description": "Converts HDR JPGs to SDR using Sharp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jumpcutking/jpg-sdr.git"
+  },
+  "keywords": [
+    "sdr",
+    "hdr",
+    "jpeg",
+    "jpg"
+  ],
+  "author": "@jumpcutking",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jumpcutking/jpg-sdr/issues"
+  },
+  "homepage": "https://github.com/jumpcutking/jpg-sdr#readme",
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
