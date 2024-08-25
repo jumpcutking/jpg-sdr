@@ -155,4 +155,4 @@ async function test() {
 };
 
 //Commented out so you don't run the example when you import the module
-test();
+// test();
