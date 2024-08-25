@@ -30,7 +30,7 @@ function findJpgFiles(dir, fileList = []) {
  * Converts an HDR JPG image to an SDR
  * @param {*} jpgPath The path to the HDR JPG image
  */
-async function convertToSDR(jpgPath) {
+async function convertToSDR(jpgPath, width = null, height = null) {
 
     lg(`Converting ${jpgPath} to SDR...`);
     try {
@@ -41,7 +41,12 @@ async function convertToSDR(jpgPath) {
         // Convert to SDR by normalizing the image
         await image
             .linear(1.0)  // No change to exposure
+            .resize(width, height, {
+                fit: 'inside',  // Maintain aspect ratio, image fits inside the specified width/height
+                withoutEnlargement: true  // Prevent enlarging the image if it's smaller than the specified dimensions
+            })
             .toFile(outputFilePath);
+
     
     } catch (error) {
         lg(`Error:`, error);
@@ -53,11 +58,11 @@ async function convertToSDR(jpgPath) {
 } module.exports.convertToSDR = convertToSDR;
 
 // Main function to process all JPG files in a directory
-async function processDirectory(dir) {
+async function processDirectory(dir, width = null, height = null) {
     const jpgFiles = findJpgFiles(dir);
 
     for (const jpgFile of jpgFiles) {
-        await convertToSDR(jpgFile);
+        await convertToSDR(jpgFile, width, height);
     }
 
     lg('All files have been processed.');
@@ -144,10 +149,10 @@ async function archiveHDR(directoryPath) {
  */
 async function test() {
     const dir = '/Users/thanos/Documents/clients/Luxe/Footage/20240813 LuxeLevels/Ready for Upload';
-    await processDirectory(dir);
+    await processDirectory(dir, 3840);
     await archiveHDR(dir);
     save('./log.json');
 };
 
 //Commented out so you don't run the example when you import the module
-// test();
+test();
