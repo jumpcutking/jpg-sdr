@@ -2,6 +2,12 @@
 Converts JPEGS from HDR to SDR.
 Built by @jumpcutking.
 
+## Install
+Using NPM:
+```bash
+npm install jpg-sdr
+```
+
 ## Functions
 
 <dl>
