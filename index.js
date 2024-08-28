@@ -259,8 +259,7 @@ function setSilentMode(silent) {
  * Example usage
  */
 async function test() {
-    // const dir = '/Users/thanos/Documents/clients/Luxe/Footage/20240813 LuxeLevels/Ready for Upload';
-    const dir = '/Users/thanos/Documents/clients/Luxe/Footage/20240813 LuxeLevels/Ready for Upload/Crops';
+    const dir = 'Ready for Upload';
     // setSilentMode(true);
     await processDirectory(dir, 2080);
     // await processDirectory(dir, 3840);
@@ -270,4 +269,4 @@ async function test() {
 };
 
 //Commented out so you don't run the example when you import the module
-test();
+// test();
