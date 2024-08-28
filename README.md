@@ -2,17 +2,6 @@
 Converts JPEGS from HDR to SDR.
 Built by @jumpcutking.
 
-# index.js/**
-Finds all JPG files in a directory and its subdirectories.
-@param {*} dir The directory to search in.
-@param {*} fileList The list of JPG files found so far.
-@returns A list of JPG files found in the directory and its subdirectories
-/,
-Finds all JPG files in a directory and its subdirectories.
-@param {*} dir The directory to search in.
-@param {*} fileList The list of JPG files found so far.
-@returns A list of JPG files found in the directory and its subdirectories
-
 ## Functions
 
 <dl>
@@ -23,12 +12,20 @@ Finds all JPG files in a directory and its subdirectories.
 <dd><p>Converts an HDR JPG image to an SDR</p>
 </dd>
 <dt><a href="#lg">lg(item, ...obj)</a></dt>
-<dd><p>Log function that also stores the log messages in an array</p>
+<dd><p>Log function that also stores the log messages in an array.
+Uses Silent mode to not log to the console.</p>
 </dd>
-<dt><a href="#archiveHDR">archiveHDR(path)</a></dt>
+<dt><a href="#archiveHDR">archiveHDR(directoryPath)</a></dt>
 <dd><p>After converting the HDR image to SDR, we need to archive the HDR image.
 We&#39;ll check any jpg file that has a .sdr.jpg file with the same name.
 If it does will move it to a folder called &#39;HDR&#39; in the same directory.</p>
+</dd>
+<dt><a href="#compressFolder">compressFolder(sourceDir, outputFile, excludePatterns)</a></dt>
+<dd><p>Compresses a folder into a ZIP archive while excluding certain files and directories.
+Example: *.old, *hdr, <em>node_modules</em></p>
+</dd>
+<dt><a href="#setSilentMode">setSilentMode(silent)</a></dt>
+<dd><p>Set the Silent mode to true or false</p>
 </dd>
 <dt><a href="#test">test()</a></dt>
 <dd><p>Example usage</p>
@@ -62,7 +59,8 @@ Converts an HDR JPG image to an SDR
 <a name="lg"></a>
 
 ## lg(item, ...obj)
-Log function that also stores the log messages in an array
+Log function that also stores the log messages in an array.
+Uses Silent mode to not log to the console.
 
 **Kind**: global function  
 
@@ -73,16 +71,41 @@ Log function that also stores the log messages in an array
 
 <a name="archiveHDR"></a>
 
-## archiveHDR(path)
+## archiveHDR(directoryPath)
 After converting the HDR image to SDR, we need to archive the HDR image.
 We'll check any jpg file that has a .sdr.jpg file with the same name.
 If it does will move it to a folder called 'HDR' in the same directory.
 
 **Kind**: global function  
 
+| Param | Type | Description |
+| --- | --- | --- |
+| directoryPath | <code>\*</code> | The directory to search in. |
+
+<a name="compressFolder"></a>
+
+## compressFolder(sourceDir, outputFile, excludePatterns)
+Compresses a folder into a ZIP archive while excluding certain files and directories.
+Example: *.old, *hdr, *node_modules*
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| sourceDir | <code>\*</code> | The source directory to compress. |
+| outputFile | <code>\*</code> | The output ZIP file. |
+| excludePatterns | <code>\*</code> | An array of patterns to exclude files and directories. |
+
+<a name="setSilentMode"></a>
+
+## setSilentMode(silent)
+Set the Silent mode to true or false
+
+**Kind**: global function  
+
 | Param | Type |
 | --- | --- |
-| path | <code>\*</code> | 
+| silent | <code>boolean</code> | 
 
 <a name="test"></a>
 
